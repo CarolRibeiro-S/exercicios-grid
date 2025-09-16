@@ -1,0 +1,115 @@
+/* Tipografia base */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap');
+
+:root{
+  --bg: #fff;
+  --ink: #000;
+  --muted: #9aa0a6;
+  --gray: #d9d9d9;
+}
+
+/* Página */
+body{
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Roboto, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+}
+
+/* Canvas com posições absolutas para bater medidas */
+.layout{
+  position: relative;
+  width: 897px;   /* 35 (margem esq) + 543 (thumb) + 17 (gutter) + 267 (sidebar) + 35 (margem dir) ≈ 897 */
+  margin: 24px auto;
+  padding-bottom: 40px;
+  background: var(--bg);
+}
+
+/* Utilitários tipográficos exigidos */
+.t-16{ font-weight:300; font-size:16px; line-height:100%; letter-spacing:0; }
+.t-18b{ font-weight:700; font-size:18px; line-height:100%; letter-spacing:0; }
+.t-14{ font-weight:300; font-size:14px; line-height:100%; letter-spacing:0; }
+
+/* BLOCO ESQUERDA (vídeo em destaque) */
+.feature-thumb{
+  position: absolute;
+  top: 33px;
+  left: 35px;
+  width: 543px;
+  height: 217px;
+  background: var(--gray);
+}
+
+.feature-title{
+  position: absolute;
+  top: 33px;                 /* alinhamos pelo topo do bloco; título fica sob a thumb */
+  left: 35px;
+  transform: translateY(217px + 16px); /* 16px de respiro abaixo da thumb */
+  font-weight:700; font-size:18px; line-height:100%; letter-spacing:0;
+}
+
+.feature-meta{
+  position: absolute;
+  top: calc(33px + 217px + 16px + 26px); /* 26px ~ altura do título + respiro mínimo */
+  left: 35px;
+  color: var(--muted);
+}
+.feature-desc{
+  position: absolute;
+  top: calc(33px + 217px + 16px + 26px + 22px);
+  left: 35px;
+  width: 543px;
+  color: #333;
+}
+
+/* SIDEBAR (direita) */
+.sidebar{
+  position: absolute;
+  top: 33px;
+  left: 595px;      /* coordenada solicitada */
+  width: 267px;
+}
+
+/* Caixa de propaganda com medidas exatas */
+.ad{
+  width: 270px;
+  height: 56px;
+  top: 33px;
+  left: 595px;
+  background: var(--gray);
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+  opacity: 1; /* conforme especificação */
+}
+
+.ad span{
+  /* "propagranda" (mantive a grafia que você passou) com a família e tamanho pedidos */
+  font-family: Roboto, sans-serif;
+  font-weight:300;
+  font-size:14px;
+  line-height:100%;
+  letter-spacing:0;
+  color:#666;
+}
+
+/* Cartões de vídeos da sidebar */
+.side-item{
+  display: grid;
+  grid-template-columns: 88px 1fr;  /* miniatura + textos */
+  grid-column-gap: 12px;
+  align-items: start;
+  margin-bottom: 16px;
+}
+.side-thumb{
+  width: 101px;
+  height: 71px;
+  top: 109px;
+  left: 595px;
+  background: var(--gray);
+}
+.side-title{ font-weight:700; font-size:18px; line-height:100%; margin-bottom: 6px; }
+.side-author{ color:#444; }
+.side-stats{ color: var(--muted); }
+
+/* Ajuda a garantir leitura mesmo com line-height 100% */
+.meta-block p + p{ margin-top: 2px; }
